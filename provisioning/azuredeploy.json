@@ -51,14 +51,14 @@
     },
     "email for notification": {
       "type": "string",
-      "defaultvalue":  "",
+      "defaultvalue":  "rainer.kempkes@haufe-lexware.com",
       "metadata": {
         "description": "Supply email address if you want to receive usage instructions."
       }
     },
     "subtemplate location": {
       "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/Microsoft/mwt-ds/master/provisioning/",
+      "defaultValue": "https://raw.githubusercontent.com/Rainer-Kempkes/mwt-ds/master/provisioning/",
       "metadata": {
         "description": "TL;DR: don't change - required for painless testing. If contributors issue pull requests the location has to be changed to the corresponding branch."
       }
@@ -136,18 +136,6 @@
         "parameters": {
           "Password": { "value": "" },
           "RandomSeed": { "value": "[concat(reference('Microsoft.Resources/deployments/Storage').outputs.userStorageAccountKey.value, 'postfix')]" }
-        }
-      }
-    },
-    {
-      "apiVersion": "2015-01-01",
-      "name": "Application_Insights",
-      "type": "Microsoft.Resources/deployments",
-      "properties": {
-        "mode": "incremental",
-        "templateLink": { "uri": "[concat(parameters('subtemplate location'), '/templates/AppInsightsTemplate.json')]" },
-        "parameters": {
-          "postfix": { "value": "[concat(variables('prefix'), reference('Microsoft.Resources/deployments/Unique_Postfix_Generator').outputs.FinalPassword.value)]" }
         }
       }
     },
@@ -265,7 +253,6 @@
         "Microsoft.Resources/deployments/Management_Password_Generator",
         "Microsoft.Resources/deployments/Online_Trainer",
         "Microsoft.Resources/deployments/Storage",
-        "Microsoft.Resources/deployments/Application_Insights",
         "Microsoft.Resources/deployments/Event_Hub_Interaction",
         "Microsoft.Resources/deployments/Event_Hub_Observation",
         "Microsoft.Resources/deployments/Event_Hub_Joined",
@@ -279,7 +266,7 @@
         "parameters": {
           "initialExplorationEpsilon": { "value": "[parameters('initial Exploration Probability')]" },
 
-          "instrumentationKey": { "value": "[reference('Microsoft.Resources/deployments/Application_Insights').outputs.instrumentationKey.value]" },
+          "instrumentationKey": { "value": "shlock" },
           "userStorageConnectionString": { "value": "[reference('Microsoft.Resources/deployments/Storage').outputs.userStorageConnectionString.value]" },
           "managementPassword": { "value": "[reference('Microsoft.Resources/deployments/Management_Password_Generator').outputs.FinalPassword.value]" },
 
@@ -389,7 +376,6 @@
       "dependsOn": [
         "Microsoft.Resources/deployments/Admin_Token_Generator",
         "Microsoft.Resources/deployments/Storage",
-        "Microsoft.Resources/deployments/Application_Insights",
         "Microsoft.Resources/deployments/Event_Hub_Joined",
         "Microsoft.Resources/deployments/Event_Hub_Evaluation",
         "Microsoft.Resources/deployments/SAS_Uri_Generator"
