@@ -63,7 +63,7 @@
   "outputs": {
     "url": {
       "type": "string",
-      "value": "[concat('https://', variables('siteName'), '.azurewebsites.net')]"
+      "value": "[concat('https://', variables('siteName'), '.azurewebsites.de')]"
     }
   }
 }
