@@ -29,7 +29,7 @@
             "[resourceId('Microsoft.Web/Sites', variables('siteName'))]"
           ],
           "properties": {
-            "RepoUrl": "https://github.com/Microsoft/mwt-ds-management-center.git",
+            "RepoUrl": "https://github.com/Rainer-Kempkes/mwt-ds-management-center.git",
             "branch": "master",
             "IsManualIntegration": true
           }
