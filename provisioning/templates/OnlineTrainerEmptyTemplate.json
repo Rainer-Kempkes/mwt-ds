@@ -27,7 +27,7 @@
     },
     "url": {
       "type": "string",
-      "value": "[concat('http://',variables('name'), '.cloudapp.net')]"
+      "value": "[concat('http://',variables('name'), '.cloudapp.de')]"
     }
   }
 }
