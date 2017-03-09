@@ -13,7 +13,7 @@
     }
   },
   "variables": {
-    "assetLocation": "https://raw.githubusercontent.com/Microsoft/mwt-ds/master/provisioning/",
+    "assetLocation": "https://raw.githubusercontent.com/Rainer-Kempkes/mwt-ds/master/provisioning/",
     "prefix": "[replace(replace(replace(replace(resourceGroup().name, '.', 'x'), '_', 'x'), ')', 'x'), '(', 'x')]"
   },
   "resources": [
@@ -49,7 +49,7 @@
       ],
       "properties": {
         "mode": "incremental",
-        "templateLink": { "uri": "[concat('https://mc-', variables('prefix'), reference('Microsoft.Resources/deployments/Unique_Postfix_Generator').outputs.FinalPassword.value, '.azurewebsites.net/Deployment/GenerateSASToken?parameters=key=', reference('Microsoft.Resources/deployments/Storage').outputs.userStorageAccountKey.value, ';trainer_size=', parameters('online Trainer VM Size'))]" }
+        "templateLink": { "uri": "[concat('https://mc-', variables('prefix'), reference('Microsoft.Resources/deployments/Unique_Postfix_Generator').outputs.FinalPassword.value, '.azurewebsites.de/Deployment/GenerateSASToken?parameters=key=', reference('Microsoft.Resources/deployments/Storage').outputs.userStorageAccountKey.value, ';trainer_size=', parameters('online Trainer VM Size'))]" }
       }
     },
     {
@@ -67,7 +67,7 @@
         },
         "parameters": {
           "onlineTrainerCspkgToken": { "value": "[reference('Microsoft.Resources/deployments/SAS_Uri_Generator').outputs.SASTokenOnlineTrainerCspkg.value]" },
-          "configLink": { "value": "[concat('https://mc-', variables('prefix'), reference('Microsoft.Resources/deployments/Unique_Postfix_Generator').outputs.FinalPassword.value, '.azurewebsites.net/Deployment/GenerateTrainerConfig?key=', reference('Microsoft.Resources/deployments/Storage').outputs.userStorageAccountKey.value)]" },
+          "configLink": { "value": "[concat('https://mc-', variables('prefix'), reference('Microsoft.Resources/deployments/Unique_Postfix_Generator').outputs.FinalPassword.value, '.azurewebsites.de/Deployment/GenerateTrainerConfig?key=', reference('Microsoft.Resources/deployments/Storage').outputs.userStorageAccountKey.value)]" },
           "name": { "value": "[concat('trainer-', concat(variables('prefix'), reference('Microsoft.Resources/deployments/Unique_Postfix_Generator').outputs.FinalPassword.value))]" }
         }
       }
